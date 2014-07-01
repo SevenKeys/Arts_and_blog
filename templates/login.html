@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if form.errors %}
+        <p class="bg-danger">Sorry, you entered invalid username or password</p>
+    {% endif %}
+    <h2 class="bg-primary">Authentication</h2>
+    <form action="/auth_user/" method="post">
+        {% csrf_token %}
+        <label for="subject">Enter username: </label><br/>
+        <input type="text" id="subject" name="subject"><br/>
+        <label for="pass">Enter password: </label><br/>
+        <input type="password" id="pass" name="password"><br/>
+        <input class="btn btn-default btn-primary" type="submit" name="submit" value="Login">
+    </form>
+    {% block invalid %}{% endblock %}
+{% endblock %}

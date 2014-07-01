@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+    <p><b>You are successfully registered</b>></p>
+    <p>Click here <a href="{% url 'login' %}">Login</a> to login.</p>
+    <p>Click here <a href="{% url 'main' %}">List of articles</a> to go back.</p>
+{% endblock %}

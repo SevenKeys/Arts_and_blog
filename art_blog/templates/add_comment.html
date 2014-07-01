@@ -1,0 +1,15 @@
+{%extends "article.html"%}
+
+{%block comment%}
+
+        <form action="/add_comment/{{article.id}}/" method="post">{%csrf_token%}
+            <table>
+                {{form.as_table}}
+            </table>
+        <input type="submit" value="Save comment">
+        </form>
+        <form action="{% url 'main' %}" method="get">
+            <input type="submit" value="Cancel">
+        </form>
+
+{%endblock%}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Article</title>
+    {%load staticfiles%}
+    <link type="text/css" rel="stylesheet" href="{%static 'css/view_article.css' %}">
+</head>
+<body>
+    <div id="article">
+        <h2>{{article.title}}</h2>
+        <p>{{article.text}}</p>
+        <p>{{article.pub_date}}</p>
+        <form action="{% url 'edit_article' article.id %}" method="get">
+            <input type="submit" value="Edit article">
+        </form>
+    </div>
+    <h3>Comments for the article</h3>
+    {%for com in comments%}
+        <div id="comments">
+        <p>{{com.comment}}</p>
+        <p>{{com.com_date}}</p>
+        </div>
+    {% endfor %}
+{%block comment%}
+    <form action="{% url 'blog' article.id %}" method="get">
+        <input type="submit" value="Add comment">
+    </form>
+{%endblock%}
+
+{% endblock %}

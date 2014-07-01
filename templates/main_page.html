@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Main page{% endblock %} 
+
+{% block content %}
+
+    <div id="list">
+        <h1>List of articles</h1>
+        <div id="success">
+            {% block success %}{% endblock %}
+        </div>
+        <ul class="list-group" class="row">
+            {% for article in list_articles %}
+                <li class="list-group-item">
+                    <a href="{% url 'content' article.id %}">
+                        <span class="badge">{{ forloop.counter }}</span>
+                        {{ article.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <form action="{% url 'add_article' %}" method="get">
+        <input class="btn btn-default btn-primary" type="submit" value="Add article"/>
+    </form>
+{% endblock %}
