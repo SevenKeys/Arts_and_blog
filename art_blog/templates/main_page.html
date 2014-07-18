@@ -6,10 +6,17 @@
 
     <div id="list">
         <h1>List of articles</h1>
+        <h3>Search</h3>
+        {% csrf_token %}
+
+        <input type="text" name="search" id="search"/>
+        <ul id="search-results">
+
+        </ul>
         <div id="success">
             {% block success %}{% endblock %}
         </div>
-        <ul class="list-group" class="row">
+        <br/><ul class="list-group" class="row">
             {% for article in list_articles %}
                 <li class="list-group-item">
                     <a href="{% url 'content' article.id %}">

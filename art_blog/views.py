@@ -8,6 +8,7 @@ from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
 
 
+
 def main_page(request):
     list_articles=Article.objects.all()
     username=auth.get_user(request).username
@@ -29,7 +30,7 @@ def add_article(request):
             c=form.save(commit=False)
             c.pub_date=timezone.now()
             c.save()
-            return HttpResponseRedirect("/all/")
+            return HttpResponseRedirect("/")
     else:
         form=ArticleForm()
     args={}
@@ -78,4 +79,12 @@ def add_comment(request,article_id):
     args['form']=form
     args['article']=a
     return render(request,'add_comment.html',args)
+
+def search_results(request):
+    if request.method=='POST':
+        search_text=request.POST['search_text']
+    else:
+        search_text=''
+    articles=Article.objects.filter(title__icontains=search_text)
+    return render(request,'ajax_search.html',{'articles':articles})
 
