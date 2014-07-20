@@ -2,7 +2,7 @@
 
 {%block comment%}
 
-        <form action="{% 'blog' article.id %}" method="post">{%csrf_token%}
+        <form action="{% url 'blog' article.id %}" method="post">{%csrf_token%}
             <table>
                 {{form.as_table}}
             </table>

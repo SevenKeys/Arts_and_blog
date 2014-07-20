@@ -5,7 +5,7 @@
 </head>
 <body>
     <h2>Edit the your article</h2>
-    <form action="/edit_article/{{article.id}}"method="post">{% csrf_token %}
+    <form action="{% url 'edit_article' article.id %}"method="post">{% csrf_token %}
         <table>
             {{form.as_table}}
          </table>

@@ -12,12 +12,17 @@
         <p>{{article.pub_date}}</p>
         <form action="{% url 'edit_article' article.id %}" method="get">
             <input type="submit" value="Edit article">
+        </form><br/>
+        <form action="{% url 'delete_article' article.id %}" method="get">
+            <input type="submit" value="Delete article">
         </form>
     </div>
-    <h3>Comments for the article</h3>
+    <h3>Comments</h3>
     {%for com in comments%}
         <div id="comments">
-        <p>{{com.comment}}</p>
+        <p>{{com.comment}}<br/>
+        <a href="{% url 'delete_comment' com.id %}">Delete</a>
+        </p>
         <p>{{com.com_date}}</p>
         </div>
     {% endfor %}

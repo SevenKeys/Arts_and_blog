@@ -61,6 +61,12 @@ def edit_article(request,article_id):
     return render(request,"edit_article.html",args)
 
 @login_required(login_url='/login/')
+def delete_article(request,article_id):
+    a=Article.objects.get(id=article_id)
+    a.delete()
+    return HttpResponseRedirect('/')
+
+@login_required(login_url='/login/')
 def add_comment(request,article_id):
     a=Article.objects.get(id=article_id)
     if request.POST:
@@ -79,6 +85,14 @@ def add_comment(request,article_id):
     args['form']=form
     args['article']=a
     return render(request,'add_comment.html',args)
+
+@login_required(login_url='/login/')
+def delete_comment(request,comment_id):
+    c=Comment.objects.get(id=comment_id)
+    article_id=c.article.id
+    c.delete()
+    return HttpResponseRedirect('/get/%s'% article_id)
+
 
 def search_results(request):
     if request.method=='POST':
