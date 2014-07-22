@@ -24,7 +24,7 @@ def content(request,article_id):
 
 @login_required(login_url='/login/')
 def add_article(request):
-    if request.POST:
+    if request.method=='POST':
         form=ArticleForm(request.POST)
         if form.is_valid():
             c=form.save(commit=False)
@@ -42,7 +42,7 @@ def add_article(request):
 def edit_article(request,article_id):
     a=Article.objects.get(id=article_id)
     username=auth.get_user(request).username
-    if request.POST:
+    if request.method=='POST':
         form=ArticleForm(request.POST)
         if form.is_valid():
             form=ArticleForm(request.POST,instance=a)
@@ -69,7 +69,7 @@ def delete_article(request,article_id):
 @login_required(login_url='/login/')
 def add_comment(request,article_id):
     a=Article.objects.get(id=article_id)
-    if request.POST:
+    if request.method=='POST':
         form=CommentForm(request.POST)
         if form.is_valid():
             c=form.save(commit=False)
