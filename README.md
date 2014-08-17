@@ -5,10 +5,18 @@ Articles and comments. Edit allowed only registered users.
 
 You need:
 
--Python 2x
--Django
+$ virtualenv env
 
-$ python manage.py syncdb
+$ ./cd env
+
+$ git clone https://github.com/SevenKeys/Arts_and_blog.git
+
+$ source scripts/activate(Windows) or
+$ source bin/activate(Linux)
+
+$ cd ./Arts_and_blog
+
+$ pip install -r requirements.txt
 
 $ python manage.py runserver
 
