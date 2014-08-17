@@ -1,7 +1,7 @@
 Arts_and_blog
 =============
 
-Articles and comments. Edit allowed only registered users.
+Articles and comments. Edit allowed only registered users. Used South and AJAX seach.
 
 You need:
 
