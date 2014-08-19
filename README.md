@@ -18,6 +18,8 @@ $ cd ./Arts_and_blog
 
 $ pip install -r requirements.txt
 
+add south to INSTALLLED_APPS in settings.py
+
 $ python manage.py runserver
 
 127.0.0.1:8000/
